@@ -1,0 +1,43 @@
+ALGORITHM somme_elem_dist
+VAR
+    tab1 : ARRAY_OF INTEGER[4];
+    tab2 : ARRAY_OF INTEGER[5];
+    i,j,,sum : INTEGER := 0;
+    m;n : INTEGER ;
+    res: BOOLEAN;
+BEGIN
+
+    tab1 := [3,1,7,9];
+    tab2 := [2,4,1,9,3];
+    n := tab1.length-1;
+    m := tab2.length-1;
+    
+    FOR i FROM 0 TO n DO 
+        res := false;
+        FOR j FROM 0 TO m DO
+            IF (tab1[i] = tab2[j]) THEN 
+                res := true;
+            END_IF
+        END_FOR
+        IF NOT res THEN 
+            sum := sum + tab1[i];
+        END_IF
+
+    END_FOR
+
+    FOR j FROM 0 TO m DO 
+        res := false;
+        FOR i FROM 0 TO n DO
+            IF (tab2[j] = tab1[i]) THEN 
+                res := true;
+            END_IF
+        END_FOR
+        IF NOT res THEN 
+            sum := sum + tab1[i];
+        END_IF
+
+    END_FOR
+
+    Write("sum of all distinct elements : ", sum);
+
+END

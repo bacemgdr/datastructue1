@@ -1,0 +1,84 @@
+//*****************************PROCEDURAL*SOLUTION*****************************//
+PROCEDURE dot_product(vec1,vec2:ARRAY_OF INTEGER[100], VAR ps : INTEGER)
+VAR 
+    i : INTEGER;
+BEGIN
+    IF(vec1.length = vec2.length) THEN
+        FOR i FROM 0 TO vec1.length DO
+            ps := ps + vec1[i] * vec2[i];
+        END_FOR
+        Write("The Dot Product of your vectors is ",ps);
+    ELSE
+        Write("Vector length not equale");
+    END_IF
+END
+
+ALGORITHM DOT_PRODUCT
+VAR
+    Vec1,Vec2 : ARRAY_OF INTEGER[100];
+    ps,n1,n2,i : INTEGER := 0 ; 
+BEGIN
+    Write("Please enter the size of the first vector");
+    Read(n1);
+    FOR i FROM 0 TO n1 DO
+        Read(Vec1[i])
+    END_FOR
+
+    Write("Please enter the size of the secend vector");
+    Read(n2);
+    FOR i FROM 0 TO n2 DO
+        Read(Vec2[i])
+    END_FOR
+
+    dot_product(Vec1,Vec2,ps);
+
+    IF (ps = 0) THEN
+        Write("Vec1 and Vec2 are orthogonal");
+    ELSE
+        Write("Vec1 and Vec2 are not orthogonal");
+    END_IF
+END
+
+//*****************************WITH FUNCTION**************************//
+
+FUNCTION dot_product(vec1,vec2: ARRAY_OF INTEGER[100]): INTEGER
+VAR
+    ps,i : INTEGER := 0;
+BEGIN
+
+    IF(vec1.length = vec2.length) THEN
+        FOR i FROM 0 TO vec1.length DO
+            ps := ps + vec1[i] * vec2[i];
+        END_FOR
+        RETURN ps;
+    ELSE
+        Write("Vector length not equale");
+        RETURN EROR; //Msg erreur
+    END_IF
+END
+
+ALGORITHM DOT_PRODUCT
+VAR
+    Vec1,Vec2 : ARRAY_OF INTEGER[100];
+    ps,n1,n2,i : INTEGER := 0 ; 
+BEGIN
+    Write("Please enter the size of the first vector (max size is 100)");
+    Read(n1);
+    FOR i FROM 0 TO n1 DO
+        Read(Vec1[i])
+    END_FOR
+
+    Write("Please enter the size of the secend vector (max size is 100)");
+    Read(n2);
+    FOR i FROM 0 TO n2 DO
+        Read(Vec2[i])
+    END_FOR
+
+    ps := dot_product(Vec1,Vec2);
+
+    IF (ps = 0) THEN
+        Write("Vec1 and Vec2 are orthogonal");
+    ELSE
+        Write("Vec1 and Vec2 are not orthogonal");
+    END_IF
+END
