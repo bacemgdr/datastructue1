@@ -1,7 +1,7 @@
 ALGORITHM somme_elem_dist
 VAR
     tab1 : ARRAY_OF INTEGER[4];
-    tab2 : ARRAY_OF INTEGER[5];
+    tab2 : ARRAY_OF INTEGER[5];                                     //declartion des variables
     i,j,,sum : INTEGER := 0;
     m;n : INTEGER ;
     res: BOOLEAN;
@@ -9,27 +9,30 @@ BEGIN
 
     tab1 := [3,1,7,9];
     tab2 := [2,4,1,9,3];
-    n := tab1.length-1;
+    n := tab1.length-1;             // Remplir tableau et efectuer la longuer de deux tableaux a des variables different
     m := tab2.length-1;
     
     FOR i FROM 0 TO n DO 
         res := false;
         FOR j FROM 0 TO m DO
-            IF (tab1[i] = tab2[j]) THEN 
+            IF (tab1[i] = tab2[j]) THEN  // cherche les nombre similaire dans le deux tableau
                 res := true;
             END_IF
         END_FOR
         IF NOT res THEN 
-            sum := sum + tab1[i];
+            sum := sum + tab1[i];  // claculer la somme le nombre qui etat trouve  dans le deux tableaux
         END_IF
 
     END_FOR
+                /* parcourire le deuxieme tableau et cherche y'a t-il vlaeur egaux dans la premeier tableau
+
+                        nottez bien cette boucle est faire si le deux tableaux n'on pas meme longeur */
 
     FOR j FROM 0 TO m DO 
         res := false;
         FOR i FROM 0 TO n DO
             IF (tab2[j] = tab1[i]) THEN 
-                res := true;
+                res := true;                
             END_IF
         END_FOR
         IF NOT res THEN 
@@ -37,7 +40,7 @@ BEGIN
         END_IF
 
     END_FOR
-
+            // Affiche le resultat final des somme des element distinct
     Write("sum of all distinct elements : ", sum);
 
 END
